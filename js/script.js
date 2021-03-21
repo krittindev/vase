@@ -3,7 +3,7 @@ let vase = {
       {
         id: 'line1',
         type: 'func',
-        legend: 'cos',
+        legend: 'f(x)',
         color: '#55A8DE',
         visible: true,
         func: func_f,
@@ -12,7 +12,7 @@ let vase = {
       {
         id: 'line2',
         type: 'func',
-        legend: 'sin',
+        legend: 'g(x)',
         color: '#A2CCB6',
         visible: true,
         func: func_g,
@@ -25,7 +25,7 @@ let vase = {
       title: {
         location: 'center',
         color: '#666666',
-        text: 'Plotta.js'
+        text: 'Vase Equations'
       },
       grid: {
         type: '',
