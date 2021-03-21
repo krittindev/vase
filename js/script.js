@@ -95,7 +95,8 @@ function calculates(){
     cy = parseFloat(document.getElementById('cy').value);
     dx = parseFloat(document.getElementById('dx').value);
     dy = parseFloat(document.getElementById('dy').value);
-    depth = parseFloat(document.getElementById('depth').value);
+    l = parseFloat(document.getElementById('l').value);
+    h = parseFloat(document.getElementById('h').value);
     coefficient_fx.push(    ay/((ax-bx)*(ax-cx)*(ax-dx))
                             +by/((bx-ax)*(bx-cx)*(bx-dx))
                             +cy/((cx-bx)*(cx-ax)*(cx-dx))
@@ -117,8 +118,8 @@ function calculates(){
                             +dy*(ax*bx*cx)/((dx-bx)*(dx-cx)*(dx-ax)))*-1 
     );
     coefficient_gx = [...coefficient_fx];
-    coefficient_gx[3] -= depth;
-    volumn = (integral_f(dx) - integral_f(ax)) - (integral_g(dx) - integral_g(ax)) + integral_g(depth);
+    coefficient_gx[3] -= h;
+    volumn = (integral_f(dx) - integral_f(ax)) - (integral_g(dx) - integral_g(ax)) + integral_g(l);
     document.getElementById('volumn').innerHTML = parseInt(volumn * (10 ** 2)) / (10 ** 2);
 
     console.log("ax: ",ax);
@@ -129,7 +130,8 @@ function calculates(){
     console.log("cy: ",cy);
     console.log("dx: ",dx);
     console.log("dy: ",dy);
-    console.log("depth: ",depth);
+    console.log("l: ",l);
+    console.log("h: ",h);
     console.log("coefficient_fx: ",coefficient_fx);
     console.log("coefficient_gx: ",coefficient_gx);
     console.log("volumn: ",volumn);

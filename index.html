@@ -26,7 +26,7 @@
         </header>
         <div class="row">
             <div class="col-sm-6">
-                <h4 class="mb-3">Constants</h4>
+                <h4 class="mb-3">Points</h4>
                 <div class="my-3">
                     <div class="row">
                         <div class="row col-sm-6">
@@ -51,7 +51,7 @@
 
                         <div class="row col-sm-6">
                             <div class="col-6">
-                                <label for="ax" class="form-label">B</label>
+                                <label for="bx" class="form-label">B</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="bx-aria-describedby">X</span>
                                     <input type="text" class="form-control" id="bx"
@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="col-6">
-                                <label for="ax" class="form-label text-light">B</label>
+                                <label for="bx" class="form-label text-light">B</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="by-aria-describedby">Y</span>
                                     <input type="text" class="form-control" id="by"
@@ -71,7 +71,7 @@
 
                         <div class="row col-sm-6">
                             <div class="col-6">
-                                <label for="ax" class="form-label">C</label>
+                                <label for="cx" class="form-label">C</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="cx-aria-describedby">X</span>
                                     <input type="text" class="form-control" id="cx"
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="col-6">
-                                <label for="ax" class="form-label text-light">C</label>
+                                <label for="cx" class="form-label text-light">C</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="cy-aria-describedby">Y</span>
                                     <input type="text" class="form-control" id="cy"
@@ -91,7 +91,7 @@
 
                         <div class="row col-sm-6">
                             <div class="col-6">
-                                <label for="ax" class="form-label">D</label>
+                                <label for="dx" class="form-label">D</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="dx-aria-describedby">X</span>
                                     <input type="text" class="form-control" id="dx"
@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="col-6">
-                                <label for="ax" class="form-label text-light">D</label>
+                                <label for="dx" class="form-label text-light">D</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="dy-aria-describedby">Y</span>
                                     <input type="text" class="form-control" id="dy"
@@ -108,35 +108,49 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <h4 class="mb-3">Depth</h4>
+                <h4 class="mb-3">Thickness</h4>
                 <div class="my-3">
-                    <input type="text" class="form-control" id="depth" placeholder="" required="">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="l-aria-describedby">L</span>
+                                <input type="text" class="form-control" id="l" aria-describedby="l-aria-describedby">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="h-aria-describedby">H</span>
+                                <input type="text" class="form-control" id="h" aria-describedby="h-aria-describedby">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <hr class="my-4">
 
-                <button class="w-100 btn btn-primary btn-lg" onclick="calculates();">Calculates</button>
-            </div>
-
-            <div class="col-sm-6">
                 <h4 class="mb-3">Result</h4>
                 <div class="my-3">
                     <h5 class="mb-3 mx-5">Formular :</h5>
                     <div class="text-center" id="formation">
                         \[
-                        V=\left(\pi\int_{x_0}^{x_3}{({f\left(x\right))}^2-({g\left(x\right))}^2}dx\right)-\left(\pi\int_{0}^{h}{({g\left(x\right))}^2}dx\
+                        V=\left(\pi\int_{x_a}^{x_d}{({f\left(x\right)})^2-({f\left(x\right)-h})^2}dx\right)+\left(\pi\int_{0}^{l}{({f\left(x\right)-h})^2}dx\
                         \right)
                         \]
                     </div>
                     <h5 class="mb-3 mx-5">Volumn :</h5>
-                    <h5 class="text-center" id="volumn">
-                    </h5>
+                    <h1 class="text-center" id="volumn">
+                    </h1>
                 </div>
-                
+
+                <button class="w-100 btn btn-primary btn-lg" onclick="calculates();">Calculates</button>
+            </div>
+
+            <div class="col-sm-6">
+
                 <h4 class="mb-3">Plot</h4>
                 <div class="my-3">
                     <div id="plot">
@@ -158,7 +172,7 @@
         crossorigin="anonymous"></script>
     <script>
         const canvas = document.getElementById('canvas');
-        var plotta = new Plotta(canvas, );
+        var plotta = new Plotta(canvas,);
         plotta.SetTitle("Vase Equations");
     </script>
 </body>
