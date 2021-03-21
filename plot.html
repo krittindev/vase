@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plot</title>
+    <script type="text/javascript" src="dist/release/plotta.min.js"></script>
+    <script type="text/javascript" src="dist/release/testData.min.js"></script>
+</head>
+<body>
+    <canvas id="canvas" width="700px" height="700px"
+        style="width:700px; height:700px; border:1px solid #d3d3d3;">
+        Graph Test
+    </canvas>
+    
+<script>
+    const canvas = document.getElementById('canvas');
+    var plotta = new Plotta(canvas, testData);
+</script>
+</body>
+</html>
