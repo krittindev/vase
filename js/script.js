@@ -6,7 +6,7 @@ let vase = {
         legend: 'f(x)',
         color: '#55A8DE',
         visible: true,
-        func: func_f,
+        func: f,
         dotNum: 1000
       },
       {
@@ -15,7 +15,7 @@ let vase = {
         legend: 'g(x)',
         color: '#A2CCB6',
         visible: true,
-        func: func_g,
+        func: g,
         dotNum: 1000
       }
     ],
@@ -42,8 +42,8 @@ let vase = {
         visible: true,
         color: '#888888',
         value: {
-          x: 2,
-          y: 2
+          x: 1,
+          y: 1
         }
       },
       axis: {
@@ -141,12 +141,23 @@ function calculates(){
 }
 
 function func_f(x){
-    // console.log(coefficient_fx[0],"x^3+",coefficient_fx[1],"x^2+",coefficient_fx[2],"x+",coefficient_fx[3]);
-    return coefficient_fx[0]*x**3 + coefficient_fx[1]*x**2 + coefficient_fx[2]*x + coefficient_fx[3]
+    return coefficient_fx[0]*x**3 + coefficient_fx[1]*x**2 + coefficient_fx[2]*x + coefficient_fx[3];
 }
 function func_g(x){
-    // console.log(coefficient_gx[0],"x^3+",coefficient_gx[1],"x^2+",coefficient_gx[2],"x+",coefficient_gx[3]);
-    return coefficient_gx[0]*x**3 + coefficient_gx[1]*x**2 + coefficient_gx[2]*x + coefficient_gx[3]
+    return coefficient_gx[0]*x**3 + coefficient_gx[1]*x**2 + coefficient_gx[2]*x + coefficient_gx[3];
+}
+function f(x){
+  return ay*(((x-bx)*(x-cx)*(x-dx))/((ax-bx)*(ax-cx)*(ax-dx)))
+        +by*(((x-ax)*(x-cx)*(x-dx))/((bx-ax)*(bx-cx)*(bx-dx)))
+        +cy*(((x-ax)*(x-bx)*(x-dx))/((cx-ax)*(cx-bx)*(cx-dx)))
+        +dy*(((x-ax)*(x-bx)*(x-cx))/((dx-ax)*(dx-bx)*(dx-cx)));
+}
+function g(x){
+  return ay*(((x-bx)*(x-cx)*(x-dx))/((ax-bx)*(ax-cx)*(ax-dx)))
+        +by*(((x-ax)*(x-cx)*(x-dx))/((bx-ax)*(bx-cx)*(bx-dx)))
+        +cy*(((x-ax)*(x-bx)*(x-dx))/((cx-ax)*(cx-bx)*(cx-dx)))
+        +dy*(((x-ax)*(x-bx)*(x-cx))/((dx-ax)*(dx-bx)*(dx-cx)))
+        -h;
 }
 function integral_f(x){
     return (22 / 7) * ((((coefficient_fx[0] ** 2) * (x ** 7)) / 7)
