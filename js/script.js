@@ -84,9 +84,9 @@ let ax = 0,
     depth = 1,
     coefficient_fx = [],
     coefficient_gx = [],
-    volumn = 0;
+    volume = 0;
 function calculates(){
-    document.getElementById('volumn').innerHTML = "";
+    document.getElementById('volume').innerHTML = "";
     ax = parseFloat(document.getElementById('ax').value);
     ay = parseFloat(document.getElementById('ay').value);
     bx = parseFloat(document.getElementById('bx').value);
@@ -119,8 +119,8 @@ function calculates(){
     );
     coefficient_gx = [...coefficient_fx];
     coefficient_gx[3] -= h;
-    volumn = (integral_f(dx) - integral_f(ax)) - (integral_g(dx) - integral_g(ax)) + integral_g(l);
-    document.getElementById('volumn').innerHTML = parseInt(volumn * (10 ** 2)) / (10 ** 2);
+    volume = (integral_f(dx) - integral_f(ax)) - (integral_g(dx) - integral_g(ax)) + integral_g(l);
+    document.getElementById('volume').innerHTML = parseInt(volume * (10 ** 2)) / (10 ** 2);
 
     console.log("ax: ",ax);
     console.log("ay: ",ay);
@@ -134,7 +134,7 @@ function calculates(){
     console.log("h: ",h);
     console.log("coefficient_fx: ",coefficient_fx);
     console.log("coefficient_gx: ",coefficient_gx);
-    console.log("volumn: ",volumn);
+    console.log("volume: ",volume);
 
     
     plotta.UpdateGraph(vase);
