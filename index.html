@@ -1,180 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <script type="text/javascript" src="dist/release/plotta.min.js"></script>
     <script type="text/javascript" src="dist/release/testData.min.js"></script>
 
-    <title>The software for calculates the amount of clay used for potting clay vases by using an estimation during
-        the period (Interpolation) and boundary integrals.</title>
-</head>
+    <script type="text/javascript">
+      window.MathJax = {
+        AuthorInit: function () {
+          MathJax.Hub.Register.StartupHook("Begin", function () {
+            MathJax.Hub.Queue(function () {
+              var math = document.getElementById("rescale");
+              var w = math.offsetWidth,
+                W = math.parentNode.offsetWidth - 40;
+              if (w > W) {
+                math.style.fontSize = (95 * W) / w + "%";
+                MathJax.Hub.getAllJax(math)[0].Rerender();
+              }
+            });
+          });
+        },
+        jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+        extensions: ["tex2jax.js"],
+      };
+    </script>
 
-<body class="bg-light">
+    <title>
+      The software for calculates the amount of clay used for potting clay vases
+      by using an estimation during the period (Interpolation) and boundary
+      integrals.
+    </title>
+  </head>
+
+  <body class="bg-light">
     <div class="container">
-        <header class="my-5 text-center">
-            <h3>The software for calculates the amount of clay used for potting clay vases by using an estimation during
-                the period (Interpolation) and boundary integrals.</h3>
-            <span>Kanyanat Chankong, Kanticha Keawthong, Fern Donlaphak Piliyathai, Krittin Kunaree Natawat
-                Phokaew</span><br>
-            <span>Princess Chulabhorn Science high School Satun</span>
-        </header>
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-3">Points</h4>
-                <div class="my-3">
-                    <div class="row">
-                        <div class="row col-sm-6">
-                            <div class="col-6">
-                                <label for="ax" class="form-label">A</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="ax-aria-describedby">X</span>
-                                    <input type="text" class="form-control" id="ax"
-                                        aria-describedby="ax-aria-describedby">
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="ax" class="form-label text-light">A</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="ay-aria-describedby">Y</span>
-                                    <input type="text" class="form-control" id="ay"
-                                        aria-describedby="ay-aria-describedby">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row col-sm-6">
-                            <div class="col-6">
-                                <label for="bx" class="form-label">B</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="bx-aria-describedby">X</span>
-                                    <input type="text" class="form-control" id="bx"
-                                        aria-describedby="bx-aria-describedby">
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="bx" class="form-label text-light">B</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="by-aria-describedby">Y</span>
-                                    <input type="text" class="form-control" id="by"
-                                        aria-describedby="by-aria-describedby">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row col-sm-6">
-                            <div class="col-6">
-                                <label for="cx" class="form-label">C</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="cx-aria-describedby">X</span>
-                                    <input type="text" class="form-control" id="cx"
-                                        aria-describedby="cx-aria-describedby">
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="cx" class="form-label text-light">C</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="cy-aria-describedby">Y</span>
-                                    <input type="text" class="form-control" id="cy"
-                                        aria-describedby="cy-aria-describedby">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row col-sm-6">
-                            <div class="col-6">
-                                <label for="dx" class="form-label">D</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="dx-aria-describedby">X</span>
-                                    <input type="text" class="form-control" id="dx"
-                                        aria-describedby="dx-aria-describedby">
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="dx" class="form-label text-light">D</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="dy-aria-describedby">Y</span>
-                                    <input type="text" class="form-control" id="dy"
-                                        aria-describedby="dy-aria-describedby">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <header class="my-5 text-center">
+        <img id="logo" src="img/icon.png" />
+        <br />
+        <h3>Vase Clay Calculator</h3>
+      </header>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4 class="mb-3">Points</h4>
+          <div class="my-3">
+            <div class="row">
+              <div class="row col-lg-6">
+                <div class="col-6">
+                  <label for="ax" class="form-label">A</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="ax-aria-describedby"
+                      >X</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ax"
+                      aria-describedby="ax-aria-describedby"
+                    />
+                  </div>
                 </div>
 
-                <h4 class="mb-3">Thickness</h4>
-                <div class="my-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="l-aria-describedby">L</span>
-                                <input type="text" class="form-control" id="l" aria-describedby="l-aria-describedby">
-                            </div>
-                        </div>
+                <div class="col-6">
+                  <label for="ax" class="form-label text-light">A</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="ay-aria-describedby"
+                      >Y</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ay"
+                      aria-describedby="ay-aria-describedby"
+                    />
+                  </div>
+                </div>
+              </div>
 
-                        <div class="col-6">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="h-aria-describedby">H</span>
-                                <input type="text" class="form-control" id="h" aria-describedby="h-aria-describedby">
-                            </div>
-                        </div>
-                    </div>
+              <div class="row col-lg-6">
+                <div class="col-6">
+                  <label for="bx" class="form-label">B</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="bx-aria-describedby"
+                      >X</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="bx"
+                      aria-describedby="bx-aria-describedby"
+                    />
+                  </div>
                 </div>
 
-                <hr class="my-4">
+                <div class="col-6">
+                  <label for="bx" class="form-label text-light">B</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="by-aria-describedby"
+                      >Y</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="by"
+                      aria-describedby="by-aria-describedby"
+                    />
+                  </div>
+                </div>
+              </div>
 
-                <h4 class="mb-3">Result</h4>
-                <div class="my-3">
-                    <h5 class="mb-3 mx-5">Formular :</h5>
-                    <div class="text-center" id="formation">
-                        \[
-                        V=\left(\pi\int_{x_a}^{x_d}{({f\left(x\right)})^2-({f\left(x\right)-h})^2}dx\right)+\left(\pi\int_{0}^{l}{({f\left(x\right)-h})^2}dx\
-                        \right)
-                        \]
-                    </div>
-                    <h5 class="mb-3 mx-5">Volume :</h5>
-                    <h1 class="text-center" id="volume">
-                    </h1>
+              <div class="row col-lg-6">
+                <div class="col-6">
+                  <label for="cx" class="form-label">C</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="cx-aria-describedby"
+                      >X</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cx"
+                      aria-describedby="cx-aria-describedby"
+                    />
+                  </div>
                 </div>
 
-                <button class="w-100 btn btn-primary btn-lg" onclick="calculates();">Calculates</button>
+                <div class="col-6">
+                  <label for="cx" class="form-label text-light">C</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="cy-aria-describedby"
+                      >Y</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cy"
+                      aria-describedby="cy-aria-describedby"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row col-lg-6">
+                <div class="col-6">
+                  <label for="dx" class="form-label">D</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="dx-aria-describedby"
+                      >X</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="dx"
+                      aria-describedby="dx-aria-describedby"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <label for="dx" class="form-label text-light">D</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="dy-aria-describedby"
+                      >Y</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="dy"
+                      aria-describedby="dy-aria-describedby"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <div class="col-sm-6">
-
-                <h4 class="mb-3">Plot</h4>
-                <div class="my-3">
-                    <div id="plot">
-                        <canvas id="canvas" width="700px" height="700px"
-                            style="width:700px; height:700px; border:1px solid #d3d3d3;">
-                            Graph Test
-                        </canvas>
-                    </div>
+          <h4 class="mb-3">Thickness</h4>
+          <div class="my-3">
+            <div class="row">
+              <div class="col-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="l-aria-describedby"
+                    >L</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="l"
+                    aria-describedby="l-aria-describedby"
+                  />
                 </div>
+              </div>
+
+              <div class="col-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="h-aria-describedby"
+                    >H</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="h"
+                    aria-describedby="h-aria-describedby"
+                  />
+                </div>
+              </div>
             </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <h4 class="mb-3">Result</h4>
+          <div class="my-3">
+            <h5 class="mb-3 mx-5">Formular :</h5>
+            <div class="w-100 text-center" id="formation">
+              <div id="rescale" style="display: inline-block">
+                \[
+                V=\left(\pi\int_{x_a}^{x_d}{({f\left(x\right)})^2-({f\left(x\right)-h})^2}dx\right)+\left(\pi\int_{0}^{l}{({f\left(x\right)-h})^2}dx\
+                \right) \]
+              </div>
+            </div>
+            <h5 class="mb-3 mx-5">Volume :</h5>
+            <h1 class="text-center" id="volume"></h1>
+          </div>
+
+          <button class="w-100 btn btn-primary btn-lg" onclick="calculates();">
+            Calculates
+          </button>
         </div>
-    </div>
-    <script src="js/MathJax.js?config=TeX-AMS_HTML">
-    </script>
-    <script src="js/script.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-    <script>
-        const canvas = document.getElementById('canvas');
-        var plotta = new Plotta(canvas,);
-        plotta.SetTitle("Vase Equations");
-    </script>
-</body>
 
+        <div class="col-lg-6">
+          <h4 class="mb-3">Plot</h4>
+          <div class="my-3">
+            <div id="plot">
+              <canvas
+                id="canvas"
+                width="700px"
+                height="700px"
+                style="width: 100%; height: 100%; border: 1px solid #d3d3d3"
+              >
+                Graph Test
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <footer class="my-5 text-center">
+        <h6>
+          The software for calculates the amount of clay used for potting clay
+          vases by using an estimation during the period (Interpolation) and
+          boundary integrals.
+        </h6>
+        <span
+          >Kanyanat Chankong, Kanticha Keawthong, Fern Donlaphak Piliyathai,
+          Krittin Kunaree Natawat Phokaew</span
+        ><br />
+        <span>Princess Chulabhorn Science high School Satun</span>
+      </footer>
+    </div>
+    <script src="js/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const canvas = document.getElementById("canvas");
+      var plotta = new Plotta(canvas);
+      plotta.SetTitle("Vase Equations");
+    </script>
+  </body>
 </html>
