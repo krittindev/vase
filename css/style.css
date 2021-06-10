@@ -2,3 +2,30 @@
   width: 50%;
   max-width: 80px;
 }
+
+.btn-primary {
+  background-color: #a67665 !important;
+  border-color: #a67665 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: #59372a !important;
+  border-color: #59372a !important;
+}
+
+.input-group-text {
+  background-color: #f2e2dc !important;
+  border: 1px solid #d9b1a3 !important;
+}
+
+.form-control {
+  border: 1px solid #d9b1a3 !important;
+}
+
+h5,
+h6 {
+  color: #59372a;
+}
