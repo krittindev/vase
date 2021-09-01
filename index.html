@@ -50,7 +50,31 @@
       </header>
       <div class="row">
         <div class="col-lg-6">
-          <h4 class="mb-3">Points</h4>
+          <h4 class="mb-3">Points
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Example
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Example</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="img/example.png" style="width: 100%;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </h4>
+          
           <div class="my-3">
             <div class="row" style="justify-content: space-evenly">
               <div class="row col-lg-6">
@@ -187,9 +211,10 @@
           <div class="my-3">
             <div class="row">
               <div class="col-6">
+                <blockquote class="blockquote">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="l-aria-describedby"
-                    ><abbr title="Vase Bottom Thickness">L</abbr></span
+                    >L</span
                   >
                   <input
                     type="text"
@@ -198,20 +223,28 @@
                     aria-describedby="l-aria-describedby"
                   />
                 </div>
+                <footer class="blockquote-footer">
+                  L is Vase Bottom Thickness
+                </footer>
               </div>
 
               <div class="col-6">
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="h-aria-describedby"
-                    ><abbr title="Vase Thickness">H</abbr></span
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="h"
-                    aria-describedby="h-aria-describedby"
-                  />
-                </div>
+                <blockquote class="blockquote">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="h-aria-describedby"
+                      >H</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="h"
+                      aria-describedby="h-aria-describedby"
+                    />
+                  </div>
+                  <footer class="blockquote-footer">
+                    H is Vase Thickness
+                  </footer>
+                </blockquote>
               </div>
             </div>
           </div>
@@ -270,6 +303,9 @@
         <span>Princess Chulabhorn Science high School Satun</span>
       </footer>
     </div>
+
+
+
     <script src="js/MathJax.js?config=TeX-AMS_HTML"></script>
     <script src="js/script.js"></script>
     <script
